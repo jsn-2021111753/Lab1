@@ -70,7 +70,7 @@ class SR:
 
     # 滑动窗口，用于接收到最小的ack后调用
     def slide_send_window(self):
-        while self.ack_seqs.get(self.send_base):  # 一直滑动到未接收到ACK的分组序号处
+        while self.ack_seqs.get(self.send_base):  # 一直滑动到未接收到ACK的分组序号
             del self.ack_seqs[self.send_base]  # 从dict数据结构中删除此关键字
             del self.time_counts[self.send_base]  # 从dict数据结构中删除此关键字
             self.send_base = self.send_base + 1  # 滑动窗口
