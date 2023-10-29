@@ -47,7 +47,7 @@ class GBN:
     def handle_time_out(self):
         print('超时，开始重传')
         self.time_count = 0  # 超时计次重启
-        for i in range(self.send_base, self.next_seq):  # 发送空中的所有分组
+        for i in range(self.send_base, self.next_seq):  # 发送所有分组
             if random.random() > self.pkt_loss:  # 概率性重传
                 self.socket.sendto(Host.make_pkt(i, self.data[i]), self.remote_address)
             print('数据已重发:' + str(i))

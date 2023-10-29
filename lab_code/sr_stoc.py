@@ -128,7 +128,7 @@ class SR:
 
     # 滑动接收窗口:滑动rcv_base，向上层交付数据，并清除已交付数据的缓存
     def slide_rcv_window(self):
-        while self.rcv_data.get(self.rcv_base) is not None:  # 循环直到出现未接受的数据包
+        while self.rcv_data.get(self.rcv_base) is not None:  # 循环直到出现未接受的包
             self.write_data_to_file(self.rcv_data.get(self.rcv_base))  # 写入文件
             del self.rcv_data[self.rcv_base]  # 清除该缓存
             self.rcv_base = self.rcv_base + 1  # 滑动窗口

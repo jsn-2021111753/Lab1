@@ -55,7 +55,7 @@ class SR:
     def handle_time_out(self, time_out_seq):
         print('超时重传:' + str(time_out_seq))
         self.time_counts[time_out_seq] = 0  # 重新定时
-        if random.random() > self.pkt_loss:  # 随机发送数据包
+        if random.random() > self.pkt_loss:  # 随机发送包
             self.socket.sendto(Host.make_pkt(time_out_seq, self.data[time_out_seq]),
                                self.remote_address)
 
